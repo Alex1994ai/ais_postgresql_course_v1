@@ -1,0 +1,106 @@
+20. Напишите запрос, возвращающий фамилии всех сотрудников, у которых третья буква фамилии - "a"
+select last_name
+from hr.employees
+where last_name like '__a%'
+
+21. Напишите запрос, возвращающий имена всех сотрудников, в фамилии которых есть буквы "a" и "e"
+
+select first_name,  job_id
+from hr.employees
+where last_name ilike '%a%' or last_name ilike '%e%'
+
+select *
+from hr.employees
+
+25. Покажите сотрудников (Назвать "FIO" стобец(оператор конкатинации) и номер телефона - назвать "Number",
+у которых номер телефона начинается на '893'.
+
+SELECT first_name || last_name as "FIO",
+       phone_number  as "Number" 
+from hr.employees 
+where  phone_number = "893%"
+
+SELECT first_name  || ' '||   last_name as "FIO",
+       phone_number  as "Number" 
+from hr.employees 
+where  phone_number like '893%'
+
+SELECT first_name  || ' '||   last_name as "FIO",
+       phone_number  as "Number" 
+from hr.employees 
+where  phone_number like '893%'
+
+7. Покажите сотрудников - фио в одном столце , не работающих в департаментах 3, 7 и 10,
+и отсортируйте их по фио.
+
+select first_name,
+       last_name 
+from hr.employees  
+where department_id not in (3,7,10) 
+order by first_name
+
+select first_name || ' ' || last name
+from hr.employees 
+where department_id not like (3,7,10) order by first_name
+
+
+select last_name || ' ' || last_name as "FIO",
+       last_name || ' ' || last_name as "FIO",
+       department_id 
+from hr.employees 
+where department_id not in (3, 7, 10) 
+order by "FIO";
+
+9. Покажите всех сотрудников, чьё имя не содержит букву 'e'.
+
+SELECT first_name
+from hr.employees
+where first_name not ilike '%e%'
+
+SELECT first_name, last_name
+from employees
+where first_name not ilike '%e%'
+
+------------------------------------------------------------------------------------
+Лекция 3 задания
+------------------------------------------------------------------------------------
+               Задание 1
+1) CREATE SCHEMA имя_схемы;
+Создать схему create schema school 
+2)CREATE TABLE имя_схемы.имя_таблицы (
+    имя_поля1 тип_данных [ограничения],
+    имя_поля2 тип_данных [ограничения],
+    имя_поля3 тип_данных [ограничения]
+);
+
+В этой схеме создать таблицу students
+3) Таблица будет содержать 3 атрибута 
+1. id - целочисленный и уникальный primary key not null
+2. name varchar ограничение 100 нот нал
+3. birth_date формат date
+
+------------------------------------------------------------------------------------
+               Задание 2
+INSERT INTO имя_схемы.имя_таблицы (поле1, поле2, поле3)
+VALUES (значение1, значение2, значение3);
+Добавить несколько записей:
+1. Ivan Ivanov 2005-03-12
+2. Anna Petrova 2004-07-25
+
+               Задание 3 
+DELETE FROM имя_схемы.имя_таблицы
+WHERE условие;
+Удалить по айди = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
